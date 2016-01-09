@@ -1,0 +1,32 @@
+{
+    "name": "stevenbuehner/multi-role-acl-base",
+    "description": "A module that implements the acl with some presets. It can be attached to htGroupManager and htUserManager or customized for other situations",
+    "keywords": [
+        "zf2",
+        "zend",
+        "module",
+        "htpasswd",
+        "apache"
+    ],
+    "require": {
+        "zendframework/zend-stdlib": "~2.5",
+        "stevenbuehner/role-interfaces" : "~0.1"    	
+    },
+    "license": "MIT",
+    "type" : "library",
+    "autoload": {
+        "psr-4": {
+            "MultiRoleAclBase\\": "src/"
+        },
+        "classmap": [
+            "src/",
+            "Module.php"
+        ]
+    },
+    "authors": [
+        {
+            "name": "Steven Buehner",
+            "email": "buehner@me.com"
+        }
+    ]
+}

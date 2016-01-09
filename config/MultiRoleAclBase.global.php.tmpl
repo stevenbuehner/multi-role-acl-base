@@ -1,0 +1,19 @@
+<?php
+return [ 
+		'MultiRoleAclBase' => [ 
+				'forbidden' => [ 
+						'controller' => 'PermissionConnector\Controller\AccessDenied',
+						'action' => 'accessNotAllowed' 
+				],
+				
+				'roles' => [ 
+						'guest',
+						'test',
+						'admin',
+						'uhu' 
+				],
+				
+				// Role Provider returns the role of a user
+				'role_provider' => 'PermissionConnector\Provider\RoleProvider' 
+		] 
+];
