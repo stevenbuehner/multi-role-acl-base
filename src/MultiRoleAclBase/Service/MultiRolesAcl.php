@@ -1,5 +1,13 @@
 <?php
 
+/**
+ * (c) Steven Bühner <buehner@me.com>
+ *
+ * @license     MIT License - http://en.wikipedia.org/wiki/MIT_License
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 namespace MultiRoleAclBase\Service;
 
 use Zend\Permissions\Acl\Acl;

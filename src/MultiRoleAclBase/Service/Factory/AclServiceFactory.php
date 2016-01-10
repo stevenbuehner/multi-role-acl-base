@@ -1,7 +1,7 @@
 <?php
 
 /**
- * (c) Steven BŸhner <buehner@me.com>
+ * (c) Steven BÃ¼hner <buehner@me.com>
  *
  * @license     MIT License - http://en.wikipedia.org/wiki/MIT_License
  *

@@ -3,9 +3,9 @@
 /** Parts of the code are from Ismael Trascastro <i.trascastro@gmail.com>
  * 
 * @link        https://github.com/itrascastro/TrascastroACL
-* @copyright   Copyright (c) Ismael Trascastro. (http://www.ismaeltrascastro.com), Steven BŸhner
+* @copyright   Copyright (c) Ismael Trascastro. (http://www.ismaeltrascastro.com), Steven Bï¿½hner
 * @license     MIT License - http://en.wikipedia.org/wiki/MIT_License
-* @author      Steven BŸhner <buehner@me.com>
+* @author      Steven Bï¿½hner <buehner@me.com>
 */
 namespace MultiRoleAclBase\Acl\Builder;
 
