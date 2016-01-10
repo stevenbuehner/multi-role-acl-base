@@ -15,7 +15,8 @@ namespace MultiRoleAclBase\Handler;
 use Zend\Http\Response;
 use Zend\Mvc\MvcEvent;
 use Zend\Permissions\Acl\AclInterface;
-use RoleInterfaces\Provider\RoleProviderInterface;
+use MultiRoleAclBase\Handler\Provider\RoleProviderInterface;
+use MultiRoleAclBase\Handler\Provider\ResourceProviderInterface;
 
 class RouteHandler {
 	/**
@@ -38,7 +39,7 @@ class RouteHandler {
 	
 	/**
 	 *
-	 * @var unknown
+	 * @var ResourceProviderInterface
 	 */
 	private $resourceProvider;
 
@@ -48,10 +49,11 @@ class RouteHandler {
 	 * @param array $config        	
 	 * @param RoleProviderInterface $roleProvider        	
 	 */
-	function __construct(AclInterface $acl, $config, RoleProviderInterface $roleProvider) {
+	function __construct(AclInterface $acl, $config, RoleProviderInterface $roleProvider, ResourceProviderInterface $resourceProvider) {
 		$this->acl = $acl;
 		$this->config = $config;
 		$this->roleProvider = $roleProvider;
+		$this->resourceProvider = $resourceProvider;
 	}
 
 	/**
@@ -69,11 +71,21 @@ class RouteHandler {
 		}
 		
 		$roles = $this->roleProvider->getRoles ();
+		$resource = $this->resourceProvider->getResource ( $event );
+		$priviledge = $this->resourceProvider->getPriviledge ( $event );
 		
-		if (! $this->acl->isAllowed ( $roles, $match->getMatchedRouteName () )) {
+		if (! $this->acl->isAllowed ( $roles, $resource, $priviledge )) {
 			$controller = $this->config ['MultiRoleAclBase'] ['forbidden'] ['controller'];
 			$action = $this->config ['MultiRoleAclBase'] ['forbidden'] ['action'];
 			$response = $event->getResponse ();
+			
+			$match->setParam ( 'oldData', array( 
+					'controller' => $match->getParam ( 'controller', null ),
+					'action' => $match->getParam ( 'action', null ),
+					'resource' => $resource,
+					'priviledge' => $priviledge,
+					'roles' => $roles 
+			) );
 			
 			$response->setStatusCode ( Response::STATUS_CODE_403 ); // Forbidden
 			$match->setParam ( 'controller', $controller );

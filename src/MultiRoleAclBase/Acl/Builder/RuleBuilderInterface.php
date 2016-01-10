@@ -2,8 +2,8 @@
 
 namespace MultiRoleAclBase\Acl\Builder;
 
-use Zend\Permissions\Acl\AclInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
+use Zend\Permissions\Acl\Acl;
 
 interface RuleBuilderInterface {
 
@@ -11,8 +11,8 @@ interface RuleBuilderInterface {
 	 * function sets all the rules in $acl based on available rutes and roles
 	 * Optional this function can also do all the resource and role-building at once.
 	 *
-	 * @param AclInterface $Acl        	
+	 * @param Acl $Acl        	
 	 */
-	public function buildRules(AclInterface $Acl, ServiceLocatorInterface $serviceLocator);
+	public function buildRules(Acl $Acl, ServiceLocatorInterface $serviceLocator);
 
 }

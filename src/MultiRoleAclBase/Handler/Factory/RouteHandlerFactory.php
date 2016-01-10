@@ -22,8 +22,9 @@ class RouteHandlerFactory {
 		$config = $serviceLocator->get ( 'config' );
 		
 		$roleProvider = $serviceLocator->get ( $config ['MultiRoleAclBase'] ['role_provider'] );
+		$resourceProvider = $serviceLocator->get ( $config ['MultiRoleAclBase'] ['resource_provider'] );
 		
-		return new RouteHandler ( $acl, $config, $roleProvider );
+		return new RouteHandler ( $acl, $config, $roleProvider, $resourceProvider );
 	}
 
 }

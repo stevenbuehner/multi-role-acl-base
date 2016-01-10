@@ -39,7 +39,10 @@ class AclServiceFactory {
 	public function __invoke($serviceLocator) {
 		$config = $serviceLocator->get ( 'config' );
 		
-		$this->acl = $serviceLocator->get ( 'MultiRoleAclBase\Acl\MultiRolesAcl' );
+		$this->acl = $serviceLocator->get ( 'MultiRoleAclBase\Service\MultiRolesAcl' );
+		
+		if (get_class ( $this->acl ) == 'MultiRoleAclBase\Service\MultiRolesAcl' || (is_subclass_of ( $this->acl, 'MultiRoleAclBase\Service\MultiRolesAcl' )))
+			$this->acl->setAllowAccessWhenResourceUnknown ( false );
 		
 		$this->roleBuilder = $serviceLocator->get ( 'MultiRoleAclBase\Acl\Builder\RoleBuilder' );
 		$this->resourceBuilder = $serviceLocator->get ( 'MultiRoleAclBase\Acl\Builder\ResourceBuilder' );
@@ -66,4 +69,5 @@ class AclServiceFactory {
 		
 		return $this->acl;
 	}
+
 }

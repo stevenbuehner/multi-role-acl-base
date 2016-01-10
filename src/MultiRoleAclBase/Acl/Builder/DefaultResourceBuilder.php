@@ -17,7 +17,7 @@ class DefaultResourceBuilder implements ResourceBuilderInterface {
 	 *
 	 * @see \MultiRoleAclBase\Acl\Builder\ResourceBuilderInterface::buildResources()
 	 */
-	public function buildResources(\Zend\Permissions\Acl\AclInterface $acl,\Zend\ServiceManager\ServiceLocatorInterface $serviceLocator) {
+	public function buildResources(Zend\Permissions\Acl\Acl $acl, \Zend\ServiceManager\ServiceLocatorInterface $serviceLocator) {
 		$this->acl = $acl;
 		$config = $serviceLocator->get ( 'config' );
 		$routes = $config ['router'] ['routes'];
